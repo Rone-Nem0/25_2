@@ -1,0 +1,40 @@
+clear; close all; clc
+% DATA
+P=[0 0 1 1
+   0 1 0 1];
+T=[0 0 0 1];
+% CREANDO LA RED OBJETO
+net = perceptron;
+net = configure(net,P,T);
+%view(net)
+% PESOS Y BIAS INICIALES
+% net.b{1} 
+% net.IW{1,1}
+net.b{1}=1.5;
+net.IW{1,1}=[-2 1];
+% CONDICIONES INICIALES
+a=sim(net,P);
+% ESPACIO INICIAL
+plotpv(P,T)
+plotpc(net.IW{1,1},net.b{1})
+grid minor
+hold
+plot(P(1:2:6),P(2:2:7),'mo')
+% ENTRENAMIENTO
+net=train(net,P,T);
+wf=net.IW{1,1};
+bf=net.b{1};
+h=plotpc(wf,bf);
+set(h,'Color','magenta')
+% VALIDANDO
+%Pv=[1;0.9];
+Pv=[0.7;0.7];
+hold
+plot(Pv(1),Pv(2),'ks')
+av=sim(net,Pv);
+
+if av==1
+    disp('Clase 1')
+else
+    disp('Clase 2')
+end

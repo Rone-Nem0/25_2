@@ -1,0 +1,11 @@
+# Fundamental Libraries for Run Local VSC 
+mystmd
+ipykernel
+
+# Jupyter Lite for Interactive Code in Static Page
+ipywidgets
+
+# Libraries Data Sciences
+matplotlib
+numpy
+
